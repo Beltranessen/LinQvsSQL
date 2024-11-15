@@ -11,6 +11,5 @@ namespace LinQ_con_SQL
         public Guid Id { get; set; }
         public string Version { get; set; }
         public string Nombre { get; set; }
-
     }
 }
