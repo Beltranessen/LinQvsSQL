@@ -8,5 +8,6 @@
         Title="MainWindow" Height="450" Width="520">
     <Grid>
         <DataGrid x:Name="DGPrincipal" HorizontalAlignment="Left" Height="400" Margin="10" Width="500" VerticalAlignment="Top"></DataGrid>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="207,326,0,0" VerticalAlignment="Top" Height="53" Width="95"/>
     </Grid>
 </Window>
