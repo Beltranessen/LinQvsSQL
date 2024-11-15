@@ -58,6 +58,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Entorno.cs" />
+    <Compile Include="suscripcion.cs" />
     <Compile Include="tester.cs" />
     <Compile Include="Universidad.designer.cs">
       <AutoGen>True</AutoGen>
