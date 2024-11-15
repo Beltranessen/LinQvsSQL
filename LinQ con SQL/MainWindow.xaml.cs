@@ -30,6 +30,8 @@ namespace LinQ_con_SQL
             string connectionString = ConfigurationManager.ConnectionStrings["UniversidadConnectionString"].ConnectionString;
             uniDC = new UniversidadDataContext(connectionString);
 
+            MessageBox.Show($"Aplicacion conectada a {connectionString}");
+
             AgregarUniversidades();
             AgregarEstudiantes();
             AgregarMaterias();
@@ -49,10 +51,10 @@ namespace LinQ_con_SQL
         {
             uniDC.ExecuteCommand("delete Universidad; DBCC CHECKIDENT('Universidad',RESEED,0)");
 
-            Universidad universidad = new Universidad() {Nombre="Moncloa"};
+            Universidad universidad = new Universidad() { Nombre = "Moncloa" };
             uniDC.Universidad.InsertOnSubmit(universidad);
 
-            universidad = new Universidad() {Nombre="Autónoma"};
+            universidad = new Universidad() { Nombre = "Autónoma" };
             uniDC.Universidad.InsertOnSubmit(universidad);
 
             universidad = new Universidad() { Nombre = "Alicante" };
@@ -69,7 +71,7 @@ namespace LinQ_con_SQL
 
             universidad = new Universidad() { Nombre = "París" };
             uniDC.Universidad.InsertOnSubmit(universidad);
-            
+
             uniDC.SubmitChanges();
 
             DGPrincipal.ItemsSource = uniDC.Universidad;
@@ -81,7 +83,7 @@ namespace LinQ_con_SQL
 
             // Usando expresiones lambda
             Universidad uni = uniDC.Universidad.First(x => x.Nombre == "Moncloa");
-            Estudiante estu = new Estudiante() { Nombre = "Elsa", Genero = "M", UniversidadId = uni.Id};
+            Estudiante estu = new Estudiante() { Nombre = "Elsa", Genero = "M", UniversidadId = uni.Id };
             uniDC.Estudiante.InsertOnSubmit(estu);
 
 
@@ -122,7 +124,7 @@ namespace LinQ_con_SQL
 
             uniDC.ExecuteCommand("delete Materia; DBCC CHECKIDENT('Materia', RESEED,0)");
 
-            Materia mater = new Materia() { Nombre = Entorno.EMaterias.BaseDeDatos.ToString()};
+            Materia mater = new Materia() { Nombre = Entorno.EMaterias.BaseDeDatos.ToString() };
             listaM.Add(mater);
             mater = new Materia() { Nombre = Entorno.EMaterias.ComercioExterior.ToString() };
             listaM.Add(mater);
@@ -167,7 +169,7 @@ namespace LinQ_con_SQL
             le.Add(em);
 
             mat = uniDC.Materia.First(m => m.Nombre.Equals(Entorno.EMaterias.Escultura.ToString()));
-            em = new EstudianteMateria() { Estudiante= estudiante, Materia = mat };
+            em = new EstudianteMateria() { Estudiante = estudiante, Materia = mat };
             le.Add(em);
 
             mat = uniDC.Materia.First(m => m.Nombre.Equals(Entorno.EMaterias.DibujoTenico.ToString()));
@@ -182,9 +184,9 @@ namespace LinQ_con_SQL
 
             estudiante = uniDC.Estudiante.First(e => e.Nombre.Equals("Carmen"));
             mat = uniDC.Materia.First(m => m.Nombre.Equals(Entorno.EMaterias.BaseDeDatos.ToString()));
-            em = new EstudianteMateria() { Estudiante=estudiante, Materia = mat }; le.Add(em);
+            em = new EstudianteMateria() { Estudiante = estudiante, Materia = mat }; le.Add(em);
             mat = uniDC.Materia.First(m => m.Nombre.Equals(Entorno.EMaterias.ProgramacionFundamentos.ToString()));
-            em = new EstudianteMateria() { Estudiante= estudiante, Materia = mat }; le.Add(em);
+            em = new EstudianteMateria() { Estudiante = estudiante, Materia = mat }; le.Add(em);
 
             estudiante = uniDC.Estudiante.First(e => e.Nombre.Equals("Alfon"));
             mat = uniDC.Materia.First(m => m.Nombre.Equals(Entorno.EMaterias.BaseDeDatos.ToString()));
@@ -242,7 +244,7 @@ namespace LinQ_con_SQL
                         Universidad = uni.Nombre,
                         Materia = mat.Nombre
                     };
-            
+
             DGPrincipal.ItemsSource = u;
         }
 
@@ -251,14 +253,14 @@ namespace LinQ_con_SQL
             StringBuilder sb = new StringBuilder();
             foreach (Estudiante estudiante in uniDC.Estudiante)
             {
-                sb.Append($"El estudiante {estudiante.Nombre} estudia en la uni {ObtenerUniversidadPorEstudiante(estudiante.Nombre).Nombre}" );
+                sb.Append($"El estudiante {estudiante.Nombre} estudia en la uni {ObtenerUniversidadPorEstudiante(estudiante.Nombre).Nombre}");
                 sb.Append("\n");
-                
+
             }
             Console.WriteLine(sb.ToString());
         }
 
-            
+
         public void GetStudentsFromUni(string uni)
         {
 
@@ -290,7 +292,7 @@ namespace LinQ_con_SQL
         public void ActualizarNombrePier()
         {
             Estudiante estu = uniDC.Estudiante.FirstOrDefault(e => e.Nombre.Equals("Pier"));
-            if (estu !=null)
+            if (estu != null)
             {
                 estu.Nombre = "Pier Luiggi";
                 uniDC.SubmitChanges();
@@ -304,10 +306,10 @@ namespace LinQ_con_SQL
             //Estudiante estudiante = uniDC.Estudiante.FirstOrDefault(e => e.Nombre.Equals("Ana"));
             //uniDC.Estudiante.DeleteOnSubmit(estudiante);
 
-            List<Estudiante> listaBorrados = uniDC.Estudiante.ToList().Where(x=> x.Nombre!="Ana").ToList();
+            List<Estudiante> listaBorrados = uniDC.Estudiante.ToList().Where(x => x.Nombre != "Ana").ToList();
 
             uniDC.Estudiante.DeleteAllOnSubmit(listaBorrados);
-             
+
             uniDC.SubmitChanges();
 
             DGPrincipal.ItemsSource = from estu in uniDC.Estudiante
