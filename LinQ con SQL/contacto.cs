@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace LinQ_con_SQL
 {
-    public class suscripcion
+    internal class contacto
     {
-        public Guid Id { get; set; }
-        public string Version { get; set; }
-        public string Nombre { get; set; }
     }
 }
