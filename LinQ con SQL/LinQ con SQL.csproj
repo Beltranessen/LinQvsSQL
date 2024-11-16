@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Contacto.cs" />
     <Compile Include="Entorno.cs" />
     <Compile Include="tester.cs" />
     <Compile Include="Universidad.designer.cs">
