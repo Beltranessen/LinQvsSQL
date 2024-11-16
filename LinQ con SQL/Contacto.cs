@@ -9,5 +9,6 @@ namespace LinQ_con_SQL
     public class Contacto
     {
         public int Id { get; set; }
+        public string Nombre { get; set:}
     }
 }
