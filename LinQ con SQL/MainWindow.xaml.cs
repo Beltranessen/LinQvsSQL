@@ -33,7 +33,7 @@ namespace LinQ_con_SQL
             MessageBox.Show($"Aplicacion conectada a {connectionString}");
             Console.WriteLine("Rama master");
             Console.WriteLine("Rama Sucripción Local");
-
+            Console.WriteLine("Rama local Feature/Contacto");
             AgregarUniversidades();
             AgregarEstudiantes();
             AgregarMaterias();
