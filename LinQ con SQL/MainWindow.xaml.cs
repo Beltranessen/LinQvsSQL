@@ -31,6 +31,7 @@ namespace LinQ_con_SQL
             uniDC = new UniversidadDataContext(connectionString);
 
             MessageBox.Show($"Aplicacion conectada a {connectionString}");
+            Console.WriteLine("Rama Sucripción Local");
 
             AgregarUniversidades();
             AgregarEstudiantes();
